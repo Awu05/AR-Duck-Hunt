@@ -8,6 +8,7 @@
 
 import UIKit
 import ARKit
+import Each
 
 enum BitMaskCategory: Int {
     case bullet = 2
@@ -17,11 +18,20 @@ enum BitMaskCategory: Int {
 class ViewController: UIViewController, SCNPhysicsContactDelegate {
 
     @IBOutlet weak var sceneView: ARSCNView!
+    @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var startProp: UIButton!
+    @IBOutlet weak var textLbl: UILabel!
+    @IBOutlet weak var numLbl: UILabel!
+    
+    
     let configuration = ARWorldTrackingConfiguration()
     var power: Float = 50
     var target: SCNNode?
-    
+    var timer = Each(1).seconds
+    var countDown = 10
+    var score = 0
+    var showMenu = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +41,25 @@ class ViewController: UIViewController, SCNPhysicsContactDelegate {
         self.sceneView.addGestureRecognizer(gestureRecognizer)
         self.sceneView.scene.physicsWorld.contactDelegate = self
     }
-
+    
+    @IBAction func settingsBtn(_ sender: Any) {
+        // This is currently a Work in progress (Not sure if I need a settings button).
+        // This will be used to possible change the difficulty of the game?
+        // Along with other settings?
+    }
+    
+    @IBAction func moreActionsBtn(_ sender: Any) {
+        self.showMenu = !self.showMenu
+        
+        if showMenu {
+            self.leadingConstraint.constant = 0
+        } else {
+            self.leadingConstraint.constant = -140
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: { self.view.layoutIfNeeded() } )
+    }
+    
     @objc func handleTap(sender: UITapGestureRecognizer) {
         guard let sceneView = sender.view as? ARSCNView else {return}
         guard let pointOfView = sceneView.pointOfView else {return}
@@ -60,10 +88,12 @@ class ViewController: UIViewController, SCNPhysicsContactDelegate {
             self.target = nodeA
             self.spawnDuck()
             self.confetti(contact: contact)
+            self.score += 1
         } else if nodeB.physicsBody?.categoryBitMask == BitMaskCategory.target.rawValue && nodeA.physicsBody?.categoryBitMask == BitMaskCategory.bullet.rawValue {
             self.target = nodeB
             self.spawnDuck()
             self.confetti(contact: contact)
+            self.score += 1
         }
         
         self.target?.removeFromParentNode()
@@ -82,13 +112,15 @@ class ViewController: UIViewController, SCNPhysicsContactDelegate {
     
     @IBAction func startBtn(_ sender: Any) {
         startGame()
+        setTimer()
     }
     
     func startGame() {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.restoreTimer()
         self.placeGrass()
         self.placeDucks()
         self.startProp.isHidden = true
-
     }
     
     func placeGrass() {
@@ -172,6 +204,34 @@ class ViewController: UIViewController, SCNPhysicsContactDelegate {
             self.moveInYaxis(node: node, direction: direction * -1)
 
         })
+    }
+    
+    func setTimer() {
+        self.timer.perform{ () -> NextStep in
+            self.countDown -= 1
+            self.numLbl.text = String(self.countDown)
+            if self.countDown == 0 {
+                self.navigationController?.setNavigationBarHidden(false, animated: false)
+                self.textLbl.text = "Your Score:"
+                self.numLbl.text = String(self.score)
+                self.reset()
+                return .stop
+            }
+            return .continue
+        }
+    }
+    
+    func restoreTimer() {
+        self.textLbl.text = "Time Left:"
+        self.countDown = 10
+        self.numLbl.text = String(self.countDown)
+    }
+    
+    func reset() {
+        self.sceneView.scene.rootNode.enumerateChildNodes { (node, _) in
+            node.removeFromParentNode()
+        }
+        self.startProp.isHidden = false
     }
 }
 
