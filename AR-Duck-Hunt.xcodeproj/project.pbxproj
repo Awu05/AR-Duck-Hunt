@@ -15,6 +15,9 @@
 		A132071E2218A10B00AFC297 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A132071C2218A10B00AFC297 /* LaunchScreen.storyboard */; };
 		A13207262218AB4700AFC297 /* Media.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = A13207252218AB4600AFC297 /* Media.scnassets */; };
 		A132072C221A15A000AFC297 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132072B221A15A000AFC297 /* MainNavigationController.swift */; };
+		A177CFFF22224BDD000C2827 /* HSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A177CFFE22224BDD000C2827 /* HSTableViewController.swift */; };
+		A177D00622225A8C000C2827 /* HSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A177D00422225A8C000C2827 /* HSTableViewCell.swift */; };
+		A177D00722225A8C000C2827 /* HSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A177D00522225A8C000C2827 /* HSTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		A132071F2218A10B00AFC297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A13207252218AB4600AFC297 /* Media.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Media.scnassets; sourceTree = "<group>"; };
 		A132072B221A15A000AFC297 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		A177CFFE22224BDD000C2827 /* HSTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSTableViewController.swift; sourceTree = "<group>"; };
+		A177D00422225A8C000C2827 /* HSTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSTableViewCell.swift; sourceTree = "<group>"; };
+		A177D00522225A8C000C2827 /* HSTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HSTableViewCell.xib; sourceTree = "<group>"; };
 		C81B2EDD76CDBEA553E76088 /* Pods-AR-Duck-Hunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR-Duck-Hunt.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR-Duck-Hunt/Pods-AR-Duck-Hunt.release.xcconfig"; sourceTree = "<group>"; };
 		D099F305C458166768D63A48 /* Pods_AR_Duck_Hunt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR_Duck_Hunt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AA5A170AD6E196D0BAC68B /* Pods-AR-Duck-Hunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR-Duck-Hunt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AR-Duck-Hunt/Pods-AR-Duck-Hunt.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +91,9 @@
 				A13207132218A10A00AFC297 /* AppDelegate.swift */,
 				A132072B221A15A000AFC297 /* MainNavigationController.swift */,
 				A13207152218A10A00AFC297 /* ViewController.swift */,
+				A177CFFE22224BDD000C2827 /* HSTableViewController.swift */,
+				A177D00422225A8C000C2827 /* HSTableViewCell.swift */,
+				A177D00522225A8C000C2827 /* HSTableViewCell.xib */,
 				A13207172218A10A00AFC297 /* Main.storyboard */,
 				A132071A2218A10B00AFC297 /* Assets.xcassets */,
 				A13207252218AB4600AFC297 /* Media.scnassets */,
@@ -158,6 +167,7 @@
 				A132071B2218A10B00AFC297 /* Assets.xcassets in Resources */,
 				A13207262218AB4700AFC297 /* Media.scnassets in Resources */,
 				A13207192218A10A00AFC297 /* Main.storyboard in Resources */,
+				A177D00722225A8C000C2827 /* HSTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,8 +225,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A177CFFF22224BDD000C2827 /* HSTableViewController.swift in Sources */,
 				A132072C221A15A000AFC297 /* MainNavigationController.swift in Sources */,
 				A13207162218A10A00AFC297 /* ViewController.swift in Sources */,
+				A177D00622225A8C000C2827 /* HSTableViewCell.swift in Sources */,
 				A13207142218A10A00AFC297 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
