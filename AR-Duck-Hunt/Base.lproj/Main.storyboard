@@ -104,9 +104,9 @@
                                 <action selector="moreActionsBtn:" destination="BYZ-38-t0r" id="G37-xV-CcS"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Settings" id="WzG-pt-pVZ">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save Score" id="WzG-pt-pVZ">
                             <connections>
-                                <action selector="settingsBtn:" destination="BYZ-38-t0r" id="Tqe-fg-F7Y"/>
+                                <action selector="saveScoreBtn:" destination="BYZ-38-t0r" id="XwN-KE-mCW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -114,6 +114,7 @@
                         <outlet property="leadingConstraint" destination="8Hw-Ds-JYg" id="bPX-JQ-Qqf"/>
                         <outlet property="menuView" destination="vio-m4-eSM" id="zMe-ZM-riJ"/>
                         <outlet property="numLbl" destination="amR-j7-FBV" id="Iyq-QO-Tw1"/>
+                        <outlet property="saveScoreProp" destination="WzG-pt-pVZ" id="4a6-0H-hNH"/>
                         <outlet property="sceneView" destination="Joc-3G-Psr" id="52N-c0-DXB"/>
                         <outlet property="startProp" destination="lF0-gZ-ZFr" id="TRj-O7-AYm"/>
                         <outlet property="textLbl" destination="Q1c-sF-Uer" id="Juz-wY-Nz0"/>
@@ -132,10 +133,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="LjI-ZM-Olb">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customCell" id="nMm-9J-Jl5">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LjI-ZM-Olb" id="yN2-R1-skB">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nMm-9J-Jl5" id="BzE-0q-iUH">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>

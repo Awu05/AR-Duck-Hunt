@@ -9,6 +9,7 @@
 import UIKit
 import ARKit
 import Each
+import CoreData
 
 enum BitMaskCategory: Int {
     case bullet = 2
@@ -23,6 +24,7 @@ class ViewController: UIViewController, SCNPhysicsContactDelegate {
     @IBOutlet weak var startProp: UIButton!
     @IBOutlet weak var textLbl: UILabel!
     @IBOutlet weak var numLbl: UILabel!
+    @IBOutlet weak var saveScoreProp: UIBarButtonItem!
     
     
     let configuration = ARWorldTrackingConfiguration()
@@ -32,6 +34,7 @@ class ViewController: UIViewController, SCNPhysicsContactDelegate {
     var countDown = 10
     var score = 0
     var showMenu = false
+    var highScoreList = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +45,45 @@ class ViewController: UIViewController, SCNPhysicsContactDelegate {
         self.sceneView.scene.physicsWorld.contactDelegate = self
     }
     
-    @IBAction func settingsBtn(_ sender: Any) {
-        // This is currently a Work in progress (Not sure if I need a settings button).
-        // This will be used to possible change the difficulty of the game?
-        // Along with other settings?
+    @IBAction func saveScoreBtn(_ sender: Any) {
+        let alertController = UIAlertController(title: "Save Your SCore", message: "Please enter your name:", preferredStyle: .alert)
+        alertController.addTextField { (_ textField:UITextField) -> Void in
+            textField.placeholder = "Enter your name"
+            textField.textAlignment = .center
+            textField.textColor = UIColor.blue
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { (_) in
+            if let name = alertController.textFields?.first?.text {
+                print(alertController.textFields?.first?.text ?? "Could not read name!")
+                self.saveScore(name: name, score: self.score)
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func saveScore(name: String, score: Int) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "HighScore", in: managedContext)!
+        
+        let highScore = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        highScore.setValue(name, forKey: "name")
+        highScore.setValue(score, forKey: "score")
+        
+        do {
+            try managedContext.save()
+            highScoreList.append(highScore)
+            print("Saved successfully!")
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
     
     @IBAction func moreActionsBtn(_ sender: Any) {
@@ -120,6 +158,7 @@ class ViewController: UIViewController, SCNPhysicsContactDelegate {
         self.restoreTimer()
         self.placeGrass()
         self.placeDucks()
+        self.saveScoreProp.isEnabled = false
         self.startProp.isHidden = true
     }
     
@@ -215,6 +254,7 @@ class ViewController: UIViewController, SCNPhysicsContactDelegate {
                 self.textLbl.text = "Your Score:"
                 self.numLbl.text = String(self.score)
                 self.reset()
+                self.saveScoreProp.isEnabled = true
                 return .stop
             }
             return .continue

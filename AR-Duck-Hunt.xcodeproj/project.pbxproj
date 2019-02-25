@@ -18,6 +18,8 @@
 		A177CFFF22224BDD000C2827 /* HSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A177CFFE22224BDD000C2827 /* HSTableViewController.swift */; };
 		A177D00622225A8C000C2827 /* HSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A177D00422225A8C000C2827 /* HSTableViewCell.swift */; };
 		A177D00722225A8C000C2827 /* HSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A177D00522225A8C000C2827 /* HSTableViewCell.xib */; };
+		A177D00A22236E55000C2827 /* AR-Duck-Hunt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A177D00822236E55000C2827 /* AR-Duck-Hunt.xcdatamodeld */; };
+		A177D02D2223979B000C2827 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A177D02C2223979B000C2827 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		A177CFFE22224BDD000C2827 /* HSTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSTableViewController.swift; sourceTree = "<group>"; };
 		A177D00422225A8C000C2827 /* HSTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSTableViewCell.swift; sourceTree = "<group>"; };
 		A177D00522225A8C000C2827 /* HSTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HSTableViewCell.xib; sourceTree = "<group>"; };
+		A177D00922236E55000C2827 /* ScoreModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScoreModel.xcdatamodel; sourceTree = "<group>"; };
+		A177D02C2223979B000C2827 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C81B2EDD76CDBEA553E76088 /* Pods-AR-Duck-Hunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR-Duck-Hunt.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR-Duck-Hunt/Pods-AR-Duck-Hunt.release.xcconfig"; sourceTree = "<group>"; };
 		D099F305C458166768D63A48 /* Pods_AR_Duck_Hunt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR_Duck_Hunt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AA5A170AD6E196D0BAC68B /* Pods-AR-Duck-Hunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR-Duck-Hunt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AR-Duck-Hunt/Pods-AR-Duck-Hunt.debug.xcconfig"; sourceTree = "<group>"; };
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A177D02D2223979B000C2827 /* CoreData.framework in Frameworks */,
 				604389E525184AACBBB04755 /* Pods_AR_Duck_Hunt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,6 +67,7 @@
 		48C897C201CB9E38DEB41B22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A177D02C2223979B000C2827 /* CoreData.framework */,
 				D099F305C458166768D63A48 /* Pods_AR_Duck_Hunt.framework */,
 			);
 			name = Frameworks;
@@ -99,6 +105,7 @@
 				A13207252218AB4600AFC297 /* Media.scnassets */,
 				A132071C2218A10B00AFC297 /* LaunchScreen.storyboard */,
 				A132071F2218A10B00AFC297 /* Info.plist */,
+				A177D00822236E55000C2827 /* AR-Duck-Hunt.xcdatamodeld */,
 			);
 			path = "AR-Duck-Hunt";
 			sourceTree = "<group>";
@@ -229,6 +236,7 @@
 				A132072C221A15A000AFC297 /* MainNavigationController.swift in Sources */,
 				A13207162218A10A00AFC297 /* ViewController.swift in Sources */,
 				A177D00622225A8C000C2827 /* HSTableViewCell.swift in Sources */,
+				A177D00A22236E55000C2827 /* AR-Duck-Hunt.xcdatamodeld in Sources */,
 				A13207142218A10A00AFC297 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +439,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A177D00822236E55000C2827 /* AR-Duck-Hunt.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A177D00922236E55000C2827 /* ScoreModel.xcdatamodel */,
+			);
+			currentVersion = A177D00922236E55000C2827 /* ScoreModel.xcdatamodel */;
+			path = "AR-Duck-Hunt.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A13207082218A10A00AFC297 /* Project object */;
 }
