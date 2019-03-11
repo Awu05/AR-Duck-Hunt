@@ -68,6 +68,7 @@ class ViewController: UIViewController, SCNPhysicsContactDelegate {
         alertController.addAction(saveAction)
         
         self.present(alertController, animated: true, completion: nil)
+        self.saveScoreProp.isEnabled = false
     }
     
     func saveScore(name: String, score: Int) {
@@ -120,6 +121,10 @@ class ViewController: UIViewController, SCNPhysicsContactDelegate {
         bullet.physicsBody?.contactTestBitMask = BitMaskCategory.target.rawValue
         self.sceneView.scene.rootNode.addChildNode(bullet)
         bullet.runAction(SCNAction.sequence([SCNAction.wait(duration: 2.0), SCNAction.removeFromParentNode()]))
+        
+        if (self.showMenu) {
+            moreActionsBtn(self)
+        }
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
