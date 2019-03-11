@@ -28,10 +28,11 @@ class HSTableViewController: UITableViewController {
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HighScore")
+        let sortByScore = NSSortDescriptor(key: "score", ascending: false)
+        fetchRequest.sortDescriptors = [sortByScore]
         
         do {
             highScoreList = try managedContext.fetch(fetchRequest) as! [NSManagedObject]
-            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }

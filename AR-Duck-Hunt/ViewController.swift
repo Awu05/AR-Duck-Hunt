@@ -45,6 +45,10 @@ class ViewController: UIViewController, SCNPhysicsContactDelegate {
         self.sceneView.scene.physicsWorld.contactDelegate = self
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        moreActionsBtn(self)
+    }
+    
     @IBAction func saveScoreBtn(_ sender: Any) {
         let alertController = UIAlertController(title: "Save Your SCore", message: "Please enter your name:", preferredStyle: .alert)
         alertController.addTextField { (_ textField:UITextField) -> Void in
